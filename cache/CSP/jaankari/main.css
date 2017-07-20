@@ -1,0 +1,112 @@
+.navbar {
+color:black !important;
+      margin-bottom: 0;
+      background-color:transparent !important;
+      z-index: 9999;
+      border: 0;
+      font-size: 12px !important;
+      line-height: 1.42857143 !important;
+      letter-spacing: 4px;
+      border-radius: 0;
+      font-family: Montserrat, sans-serif;
+  }
+
+  .navbar-nav li a:hover, .navbar-nav li.active a {
+      color: #7cb1c1 !important;
+      background-color: #fff !important;
+  }
+  .navbar-d efault .navbar-toggle {
+      border-color: transparent;
+      color: #fff !important;
+  }
+
+  body {
+    background: url(header1.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+  
+  .inp{
+    height: 2%!important;
+    width: 20%;
+    margin-left: 20%; 
+    font-size:caption  6px  ;
+  }
+  .button-style
+  {
+    height: 2%;
+    width: 70px;
+    margin-left: 0.5%;
+    text-align: center;
+  }
+  .glyphicon.glyphicon-ok{
+      font-size: 150px;
+  }
+  .glyphicon.glyphicon-user{
+      font-size: 150px;
+  }
+  .glyphicon.glyphicon-road{
+      font-size: 150px;
+  }
+  h1,h2 {
+     color:black;
+    font-weight: 200;
+    margin: 0.4em 0;
+  }
+  h1 {
+    font-size: 3.5em; }
+  h2 {
+    color: black;
+    font-size: 2em;
+  }
+
+  .col-sm-4{
+  text-align:center;
+  color:black;
+  }
+  .footer{
+  text-align:center;
+  color:black;
+  }
+  .glyphicon.glyphicon-heart{
+  color:red;
+  }
+  h3{
+  font-size:240%;
+  color:black;
+  }
+
+  .slideanim {
+      visibility:hidden;
+      visibility:visible\9;
+  }
+
+  h1{
+    text-align: center;
+  }
+
+  p{
+    font-size: 18px;
+  }
+  .slideanim.slide {
+      visibility: visible;
+      animation: slide 1s;
+  }
+  .slideanim::after {
+
+      content: "";
+      display: table;
+      clear: both;
+  }
+  @keyframes slide {
+      0% {
+          opacity: 0;
+          transform: translateY(50%);
+      }
+      100% {
+          opacity: 1;
+          transform: translateY(0);
+      }
+  }

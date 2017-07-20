@@ -1,2 +1,2 @@
 # jaankari
-Tourist information about states of India
+Tourist information about cities of India
