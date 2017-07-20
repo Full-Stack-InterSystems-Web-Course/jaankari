@@ -2,20 +2,16 @@
 <html>
   <head>
     <title> Second page </title>
-    <!--<script src="app.js"> </script> база с откуда берем данные (json)-->
     <link rel="stylesheet" href="mainsecondpage.css" type="text/css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<link href="http://fonts.googleapis.com/css?family=Raleway:200,100,400" rel="stylesheet" type="text/css" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.0/react.js"></script>
-<script id="test" type="application/json" src="http:/myresources/stuf.json">
-</script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="http://fonts.googleapis.com/css?family=Raleway:200,100,400" rel="stylesheet" type="text/css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.0/react.js"></script>
+    <script id="test" type="application/json" src="http:/myresources/stuf.json"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.0/react-dom.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.6.15/browser.js"></script>
-
-
-<script
-  src="http://code.jquery.com/jquery-3.2.1.js"
+    <script
+    src="http://code.jquery.com/jquery-3.2.1.js"
   integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
   crossorigin="anonymous"></script>
 
@@ -71,11 +67,11 @@
           data = forecastEntry.dt_txt.substring(0,10)
           if(time == '00:00:00')
           {
-            html += '<p>' + data + ' at night: ' +  forecastEntry.main.temp + "°С" + '</p>'
+            html += '<p>' + data + ' at night: ' +  forecastEntry.main.temp + " �C" + '</p>'
           }
           if(time == '09:00:00')
           {
-            html += '<p>' + data + ' at day: '  + forecastEntry.main.temp + "°С" + '<br/>' + 'Pressure: ' + forecastEntry.main.pressure + 'hPa' + '<br/>' + 'Humidity: ' + forecastEntry.main.humidity + '%' + '</p>'
+            html += '<p>' + data + ' at day: '  + forecastEntry.main.temp + " �C" + '<br/>' + 'Pressure: ' + forecastEntry.main.pressure + 'hPa' + '<br/>' + 'Humidity: ' + forecastEntry.main.humidity + '%' + '</p>'
           }
         })
       $('#log').html(html)
@@ -104,7 +100,7 @@
 	        </div>
           <div class= "col-xs-6 col-md-4">
             <div class= "header1">
-              Traing timing
+              Train timing
             </div>
             <div class = "header3">
               <button type="submit" >
@@ -150,7 +146,6 @@
     <br/>
       
       <table id="table" style="margin: 5%;"></table>		
-      		<!--ИНФОРМАЦИЯ ПРО ОТЕЛИ ИЗ БД-->
     <div style="
        text-align: right;
        text-shadow: currentColor;
@@ -169,7 +164,7 @@
              } 
              document.getElementById("header").innerHTML=$_GET.cityName;
 
-            var webapp = "/rest/city"+$_GET.cityName;
+            var webapp = "/rest/city/"+$_GET.cityName;
              $.ajax({
             url:webapp,
             type:"GET",
@@ -177,6 +172,7 @@
             
             success:function(data)
             {
+            	data = JSON.parse(data);
                 console.log(data.hotels[0].name);
                 document.getElementById("description").innerHTML=data.citydesr;
                  var table = document.getElementById('table');
