@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title> Welcome to Jaankaari!</title>
+<link rel="stylesheet" href="main.css" type="text/css" />
+<meta charset="utf-8">
+<meta name = "viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet">
+<link href="http://fonts.googleapis.com/css?family=Raleway:200,100,400" rel="stylesheet" type="text/css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.0/react.js"></script>
+<script id="test" type="application/json" src="http:/myresources/stuf.json">
+</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.0/react-dom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.6.15/browser.js"></script>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="float-panel.js"> </script>
+</head>
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#myPage">Jaankari</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#about">ABOUT</a></li>
+        <li><a href="#services">SERVICES</a></li>
+        <li><a href="http://176.112.202.53:57772/jaankari/chat/public/index.html"> CHAT </a> </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<body>
+ </div>
+ <h1 class="heading1"><font color="#FCFBE3"> Welcome to Jaankari! </font> </h1><h1>
+   <p class = "heading2" > <font color="#FCFBE3">
+     Where will you Travel today?
+   </p>
+   <script type="text/babel">
+      var cityName;
+      var SEarch =React.createClass({
+       Clickbutton: function()
+       {
+
+
+           var info;
+           cityName=$("#city-name").val().toUpperCase();
+           var webapp = "/rest/cities";
+             $.ajax({
+                 url:webapp,
+                 type:'GET',
+                 dataType:"json",
+
+                 success: function(data){
+                     cityName=$("#city-name").val().toUpperCase();
+                     var arraycity=data.cities.map(function(el)
+                     {
+                         return el.name;
+                     });
+                     for(var i=0;i<arraycity.length;i++)
+                     if(cityName==arraycity[i])
+                       {
+                           window.location.href="secondPage.html?cityName="+cityName;
+                           break;
+                       }
+
+                 },
+
+                 error: function()
+                 {
+                     console.log("error");
+                 }
+
+             });
+
+
+
+       },
+
+
+
+       render: function() {
+                   return (
+                       <div >
+                           <input  calssName="inp" id="city-name" type="text" onChange={this.handleSearch} placeholder="Search..."/>
+                           <button  className="button-style" onClick={this.Clickbutton}>Go</button>
+                       </div>
+                   );
+       }
+      });
+      ReactDOM.render(
+
+                 <SEarch />
+               ,
+               document.getElementById("Components")
+           );
+   </script>
+
+   <div id="Components"></div>
+<div class="tobottom">
+
+
+<div class="row slideanim ">
+
+<div class="col-sm-4 ">
+<span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+<h3> Handpicked Stays. </h3>
+<p> Minute Research and Analysis, Lets us pick the best hotels according to a category. </p>
+</div>
+<div class="col-sm-4 ">
+<span class="glyphicon glyphicon-cloud" aria-hidden="true"></span>
+<h3> Realtime Weather.  </h3>
+<p> Using the Openweather API, we provide real time,up to date weather updates. </p>
+</div>
+<div class="col-sm-4 ">
+<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+<h3> Ease of Mind.  </h3>
+<p> Everything is thought after, with our app there is never a moment of doubt.</p>
+</div>
+</div>
+</div>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+
+
+
+<div class="footer">
+<p class="wow"> Made with <span class="glyphicon glyphicon-heart" aria-hidden="true"></span> From Russia & India. </p>
+ </div>
+</body>
+  </html>

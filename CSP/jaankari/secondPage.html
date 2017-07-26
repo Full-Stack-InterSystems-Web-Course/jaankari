@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> Second page </title>
+    <link rel="stylesheet" href="mainsecondpage.css" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="http://fonts.googleapis.com/css?family=Raleway:200,100,400" rel="stylesheet" type="text/css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.0/react.js"></script>
+    <script id="test" type="application/json" src="http:/myresources/stuf.json"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.0/react-dom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.6.15/browser.js"></script>
+    <script
+    src="http://code.jquery.com/jquery-3.2.1.js"
+  integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+  crossorigin="anonymous"></script>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <!--Backgroung tune-->
+    <style>
+      body { background: url(picture4.jpg);
+      	background-position: center;
+      	background-attachment: fixed;
+        -moz-background-size: 100%; /* Firefox 3.6+ */
+        -webkit-background-size: 100%; /* Safari 3.1+ ?? Chrome 4.0+ */
+        -o-background-size: 100%; /* Opera 9.6+ */
+        background-size: 100%; /* modern brausers*/
+	}
+	#map {
+        width: 100%;
+        height: 400px;
+        background-color: grey;
+      }
+    </style>
+
+    
+	<!--Script to return Weather Forecast-->
+  <script>
+    var openWeatherAppId = 'a4019707b0da676821579591eeae2f30',openWeatherUrl = 'http://api.openweathermap.org/data/2.5/forecast';
+    var $_GET = {}; 
+             var __GET = window.location.search.substring(1).split("&"); 
+             for(var i=0; i<__GET.length; i++) { 
+                var getVar = __GET[i].split("="); 
+                $_GET[getVar[0]] = typeof(getVar[1])=="undefined" ? "" : getVar[1]; 
+             } 
+             
+    $(document).ready(function(){
+      var cityName = $_GET.cityName;
+      getData(openWeatherUrl, cityName, openWeatherAppId, 'metric');
+    })
+    function getData (url, cityName, appId, units) {
+      var request = $.ajax({
+        url: url,
+        dataType: "jsonp",
+        data: {q: cityName, appid: appId, units: units},
+        jsonpCallback: "fetchData",
+        type: "GET"
+      }).fail(function(error){
+        console.error(error)
+      })
+    }
+    function fetchData (forecast) {
+      var time
+      var data
+      var html = '',
+      cityName = forecast.city.name,
+      country = forecast.city.country
+        html += '<h3> Weather Forecast for ' + cityName + ', ' + country + '</h3>'
+        forecast.list.forEach(function(forecastEntry, index, list)
+        {
+          time = forecastEntry.dt_txt.substring(11)
+          data = forecastEntry.dt_txt.substring(0,10)
+          if(time == '00:00:00')
+          {
+            html += '<p>' + data + ' at night: ' +  forecastEntry.main.temp + " �C" + '</p>'
+          }
+          if(time == '09:00:00')
+          {
+            html += '<p>' + data + ' at day: '  + forecastEntry.main.temp + " �C" + '<br/>' + 'Pressure: ' + forecastEntry.main.pressure + 'hPa' + '<br/>' + 'Humidity: ' + forecastEntry.main.humidity + '%' + '</p>'
+          }
+        })
+      $('#log').html(html)
+    }
+  </script>
+  </head>
+  <body>
+ <p><a name="main"></a></p>
+    <div id="result"></div>
+   	 <div class="row" style="margin:0;">
+		<div class= "col-xs-12 col-md-8">
+	      <div id="header"></div>
+	    <div id="description"></div>
+
+	<!--Battons to the next pages (places, hotels, trains) -->
+	      <div class="row"> 
+	        <div class= "col-xs-6 col-md-4">
+	          <div class= "header1">
+	            Places to see
+	          </div>
+	          <div class = "header3">
+	            <button type="submit" >
+	                <p><a href="#places"><img src="places.png" style="width: 100px;"></a></p> 
+	            </button>
+	          </div>
+	        </div>
+          <div class= "col-xs-6 col-md-4">
+            <div class= "header1">
+              Train timing
+            </div>
+            <div class = "header3">
+              <button type="submit" >
+                  <p><a href="#places"><img src="trains.png" style="width: 100px;"></a></p> 
+              </button>
+            </div>
+          </div>
+	        <div class= "col-xs-6 col-md-4">
+	          <div class= "header1">
+	            Where to stay
+	          </div>
+	          <div class = "header3">
+	            <button type="submit" >
+	                <p><a href="#hotels"><img src="hotels.png" style="width: 100px;"></a></p>
+	            </button>
+	          </div>
+	        </div>
+	      </div>
+     </div>
+
+    <!--Out weather forecast-->
+      <div class= "col-xs-6 col-md-4">
+        <div class="weather">
+        <div class="weatherheader">
+          <h2>Jaankari's Weather!</h2>
+          <hr/>
+        </div>    
+        <div class="weatherout">
+          <div id="log">loading...</div>
+        </div>
+        </div>
+      </div>
+    </div>
+
+
+<!-- Places with buttons to the information about place -->
+    
+    <!-- Hotels with the information about -->
+     <p><a name="hotels"></a></p>
+
+   
+    <div id="header">WHERE TO STAY</div>
+    <br/>
+      
+      <table id="table" style="margin: 5%;"></table>		
+    <div style="
+       text-align: right;
+       text-shadow: currentColor;
+       margin: 5%;
+       font-size: 150%">
+
+      <p><a href="#main">TO BEGIN</a></p>
+    </div>
+  
+    <script type="text/javascript"> 
+      var $_GET = {}; 
+             var __GET = window.location.search.substring(1).split("&"); 
+             for(var i=0; i<__GET.length; i++) { 
+                var getVar = __GET[i].split("="); 
+                $_GET[getVar[0]] = typeof(getVar[1])=="undefined" ? "" : getVar[1]; 
+             } 
+             document.getElementById("header").innerHTML=$_GET.cityName;
+
+            var webapp = "/rest/city/"+$_GET.cityName;
+             $.ajax({
+            url:webapp,
+            type:"GET",
+            datatype:"json",
+            
+            success:function(data)
+            {
+            	data = JSON.parse(data);
+                console.log(data.hotels[0].name);
+                document.getElementById("description").innerHTML=data.citydesr;
+                 var table = document.getElementById('table');
+                  var html="";
+                  var html1="";
+                    for (i = 0; i < data.hotels.length; i++) 
+                    {
+
+                        html += '<tr>'
+                        +'<td>'+'<img class="oppos" style="margin:10px;"src="'+data.hotels[i].image+'">'+'</td>'
+                        +'<td>'+'<div>'+data.hotels[i].name+'</div>'
+                        ;
+                          for(var j=0;j<data.hotels[i].rating;j++)
+                          {
+                              html+='<img class="oppos" style="margin:10px;"src="'+'http://www.newsamachar.com/images/star.gif'+'">';
+                          }
+
+
+
+                          html+='<div>'+data.hotels[i].address+'</div>'
+                        +'</td>'
+                        
+
+                              +'</tr>';
+
+                    }
+                    table.innerHTML = html;
+			
+		    
+
+
+
+                
+            },
+            error: function(data)
+            {
+                console.log("error in json");
+                
+            }
+            });
+    </script>
+	<div id="map"></div>
+  </body>
+</html>
+
