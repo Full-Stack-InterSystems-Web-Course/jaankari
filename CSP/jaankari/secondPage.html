@@ -3,6 +3,7 @@
   <head>
     <title> Second page </title>
     <link rel="stylesheet" href="mainsecondpage.css" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link href="http://fonts.googleapis.com/css?family=Raleway:200,100,400" rel="stylesheet" type="text/css" />
@@ -18,7 +19,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <!--Backgroung tune-->
     <style>
-      body { background: url(picture4.jpg);
+      body { background: url(newback.png);
       	background-position: center;
       	background-attachment: fixed;
         -moz-background-size: 100%; /* Firefox 3.6+ */
@@ -72,7 +73,7 @@
           data = forecastEntry.dt_txt.substring(0,10)
           if(time == '00:00:00')
           {
-            html += '<p>' + data + ' at night: ' +  forecastEntry.main.temp + " �C" + '</p>'
+            html += '<p>' + data + ' at night: ' +  forecastEntry.main.temp + " C" + '</p>'
           }
           if(time == '09:00:00')
           {

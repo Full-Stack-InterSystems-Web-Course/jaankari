@@ -1,6 +1,8 @@
 #header{
   text-align: center;
+  font-family: 'Playfair Display', serif;
   font-size: 500%;
+  color: #FCFBE3;
 }
 .title{
   position:relative;
@@ -11,11 +13,13 @@
 }
 
 #description{
+	font-family: 'Playfair Display', serif;
   text-align: left;
     font-size: 180%;
     text-indent: 1.25em; /* ???????????? ???µ???????? ???????????? */
     text-align: justify;
     margin: 5%; /* ?????????????? ???????????? ???»?µ???µ?????° */
+    color: #FCFBE3;
 }
 
 #part1{
@@ -35,9 +39,11 @@
 }
 
 .weatherheader{
+	font-family: 'Playfair Display', serif;
   text-align: right;
     font-size: 200%;
     margin-right: 5%;
+    color: #FCFBE3;
 }
 .weatherout{
   background-color: thistle; 
@@ -56,8 +62,10 @@ h2{
 }
 
 .header1{
+	font-family: 'Playfair Display', serif;
   text-align: center;
   font-size: 300%;
+  color: #FCFBE3;
 }
 
 .header2{
@@ -71,6 +79,7 @@ h2{
 
 .header3{
   text-align: center;
+  border-radius:50%;
 }
 
 .oppo{
@@ -99,3 +108,16 @@ h2{
     font-size: 30px;
     
   }
+
+  .one{
+  	border-radius:50%;
+  }
+  .oppos{
+  	border-radius:40%;
+  }
+  
+  td{
+  	font-family: 'Playfair Display', serif;
+  	color: #FCFBE3;
+  }
+  
